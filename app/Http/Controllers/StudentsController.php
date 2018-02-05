@@ -18,9 +18,7 @@ class StudentsController extends Controller
     {
         $student = Student::find($id);
 
-        return view('students.show', compact('student'));
-
-        
+        return view('students.show', compact('student'));       
     }
 
     public function create()
@@ -43,8 +41,7 @@ class StudentsController extends Controller
             'cpf' => 'CPF inválido',
             'phone.min'  => 'O telefone deve ter 10 números ou mais',
             'date' => 'Data Inválida'
-        ]);
-       
+        ]);       
 
         $data = $request->toArray();
         
@@ -57,6 +54,8 @@ class StudentsController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
+
+         return view('students.edit', compact('student'));
     }
 
     public function update(Request $request, $id)
@@ -64,18 +63,19 @@ class StudentsController extends Controller
         $student = Student::find($id);
 
 
-        request()->validate([
+         request()->validate([
             'name' => 'required|fullname', 
-            'cpf' => 'required|cpf|unique:students,cpf',
+            'cpf' => 'required|cpf',
             'phone' => 'required|min:12',
             'rg' => 'required',
-            'date_birth' => 'required|date'
+            'date_birth' => 'required|date_format:d/m/Y'
             ],[
             'required' => 'Campo obrigatório',
             'unique' =>'CPF já cadastrado',           
             'fullname' => 'Informe o nome completo',
             'cpf' => 'CPF inválido',
             'phone.min'  => 'O telefone deve ter 10 números ou mais',
+            'date' => 'Data Inválida'
         ]);
        
 

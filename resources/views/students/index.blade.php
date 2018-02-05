@@ -25,7 +25,7 @@
     <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-    <!--script src="{{ asset('/js/sweetalert.min.js') }}"></script-->
+    <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('/js/studentsList.js') }}"></script>
 @stop
 
@@ -61,14 +61,14 @@
                                                 <td>
                                                     {{ $student->name }} <br>
                                                     <div style="float:left; margin-right: 10px">
-                                                        {!! Form::open(['route' => ['alunos.destroy', $user->id], 'method' => 'delete', 'id'=>'form'.$user->id]) !!}
-                                                        {!! Form::button('<i class="fa fa-times"></i> Excluir', ['type' => 'submit','class' => 'btn btn-danger', 'onclick'=>"deleteConfirm(event, {$user->id})"]) !!}
+                                                        {!! Form::open(['route' => ['alunos.destroy', $student->id], 'method' => 'delete', 'id'=>'form'.$student->id]) !!}
+                                                        {!! Form::button('<i class="fa fa-times"></i> Excluir', ['type' => 'submit','class' => 'btn btn-danger', 'onclick'=>"deleteConfirm(event, {$student->id})"]) !!}
                                                         {!! Form::close() !!}
                                                         &nbsp; &nbsp;
                                                     </div>
-                                                    <a href="{{ route('alunos.edit',['id' => $user->id]) }}" class='btn btn-warning'><i class="fa fa-edit"></i> Editar</a>
+                                                    <a href="{{ route('alunos.edit',['id' => $student->id]) }}" class='btn btn-warning'><i class="fa fa-edit"></i> Editar</a>
                                                     &nbsp; &nbsp;
-                                                    <a href="{{ route('alunos.show',['id' => $user->id]) }}" class ='btn btn-primary'><i class="fa fa-eye"></i> Visualizar</a>
+                                                    <a href="{{ route('alunos.show',['id' => $student->id]) }}" class ='btn btn-primary'><i class="fa fa-eye"></i> Visualizar</a>
                                                    &nbsp; &nbsp;
                                                 </td>
                                                 <td>{{ $student->cpf }}</td>
