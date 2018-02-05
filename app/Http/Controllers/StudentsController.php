@@ -18,6 +18,8 @@ class StudentsController extends Controller
     {
         $student = Student::find($id);
 
+        return view('students.show', compact('student'));
+
         
     }
 
