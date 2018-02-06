@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Entities\Registration;
+use App\Entities\Course;
+use Illuminate\Support\Facades\Input;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -64,6 +67,24 @@ class AppServiceProvider extends ServiceProvider
 
                 return ($dv == $dv_informed);
             }
+        });
+
+
+        \Validator::extend('enrolled', function($attribute, $value, $parameters, $validator){
+
+            $student_id   = Input::get($parameters[0]);
+            $course_id    = Input::get($parameters[1]);  
+            $year         = Input::get($parameters[2]); 
+
+            $registration = Registration::where('student_id',$student_id)->where('year', $year)->first();
+
+            if (count($registration) > 0) {
+                $course = Course::find($course_id);
+
+                return $registration->course->period !== $course->period;  
+            } 
+                
+            return false;            
         });
     }
 
