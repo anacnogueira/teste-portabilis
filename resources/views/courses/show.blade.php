@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
 @section('htmlheader_title')
-    Alunos
+    Cursos
 @endsection
 
 @section('contentheader_title')
-    Alunos
+    Cursos
 @stop
 
 @section('htmlheader_css')
@@ -22,7 +22,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="{{ route('alunos.index') }}"><i class="fa fa-users"></i>Alunos</a></li>
+        <li><a href="{{ route('cursos.index') }}"><i class="fa fa-users"></i>Cursos</a></li>
         <li class="active">Visualizar</li>
     </ol>
 @stop
@@ -37,15 +37,15 @@
                             <div class="col-md-12">
                                 <dl>
                                    <dt>Nome: </dt>
-                                   <dd>{{ $student->name }}&nbsp;</dd>    
-                                    <dt>RG: </dt>
-                                    <dd>{{ $student->rg }}&nbsp;</dd>
-                                    <dt>CPF: </dt>
-                                    <dd>{!! $student->cpf !!}&nbsp;</dd>
-                                    <dt>Data de Nascimento: </dt>
-                                    <dd>{!! $student->date_birth !!}&nbsp;</dd>
-                                    <dt>Telefone: </dt>
-                                    <dd>{{ $student->phone }}&nbsp;</dd>                                   
+                                   <dd>{{ $course->name }}&nbsp;</dd>    
+                                    <dt>Valor da matrícula: </dt>
+                                    <dd>{{ $course->monthly_amount }}&nbsp;</dd>
+                                    <dt>Valor da mensalidade: </dt>
+                                    <dd>{!! $course->registration_tax !!}&nbsp;</dd>
+                                    <dt>Período: </dt>
+                                    <dd>{!! $course->period !!}&nbsp;</dd>
+                                    <dt>Duração: </dt>
+                                    <dd>{{ $course->duration }} meses&nbsp;</dd>                                   
                                 </dl>
                             </div>
                         </div>
@@ -55,20 +55,20 @@
                                 <div class="actions">
                                     <ul>
                                         <li>
-                                            <a href="{{ route('alunos.edit', ['id' => $student->id]) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar </a> 
+                                            <a href="{{ route('cursos.edit', ['id' => $course->id]) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar </a> 
                                         </li>
                                         <li>
                                             <div style="float:left; margin-right: 10px">
-                                                {!! Form::open(['route' => ['alunos.destroy', $student->id], 'method' => 'delete', 'id'=>'form'.$student->id]) !!}
-                                                {!! Form::button('<i class="fa fa-times"></i> Excluir', ['type' => 'submit','class' => 'btn btn-danger','onclick'=>"deleteConfirm(event, $student->id)"]) !!}
+                                                {!! Form::open(['route' => ['cursos.destroy', $course->id], 'method' => 'delete', 'id'=>'form'.$course->id]) !!}
+                                                {!! Form::button('<i class="fa fa-times"></i> Excluir', ['type' => 'submit','class' => 'btn btn-danger','onclick'=>"deleteConfirm(event, $course->id)"]) !!}
                                                 {!! Form::close() !!}                                                    
                                             </div> 
                                         </li>
                                         <li>
-                                            <a href="{{ route('alunos.index') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i> Listar </a> 
+                                            <a href="{{ route('cursos.index') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i> Listar </a> 
                                         </li>
                                         <li>
-                                            <a href="{{ route('alunos.create') }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Adicionar</a>
+                                            <a href="{{ route('cursos.create') }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Adicionar</a>
                                         </li>
                                     </ul>
                                 </div>
