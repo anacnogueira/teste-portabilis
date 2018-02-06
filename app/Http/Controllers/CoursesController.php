@@ -7,6 +7,13 @@ use App\Entities\Course;
 
 class CoursesController extends Controller
 {
+     private $periods = [
+        'matutino'=>'matutino', 
+        'vespertino'=>'vespertino', 
+        'noturno'=>'noturno', 
+    ];
+
+
     public function index()
     {
         $courses = Course::all();
@@ -23,31 +30,30 @@ class CoursesController extends Controller
 
     public function create()
     {
-        return view('students.create');
+        $periods = $this->periods;
+
+        return view('courses.create', compact('periods'));
     }
 
     public function store(Request $request)
     {
        request()->validate([
-            'name' => 'required|fullname', 
-            'cpf' => 'required|cpf|unique:students,cpf',
-            'phone' => 'required|min:12',
-            'rg' => 'required',
-            'date_birth' => 'required|date_format:d/m/Y'
+            'name' => 'required', 
+            'monthly_amount' => 'required',
+            'registration_tax' => 'required',
+            'period' => 'required|in:'.implode(',', $this->periods),
+            'duration' => 'required|integer'
             ],[
             'required' => 'Campo obrigatório',
-            'unique' =>'CPF já cadastrado',           
-            'fullname' => 'Informe o nome completo',
-            'cpf' => 'CPF inválido',
-            'phone.min'  => 'O telefone deve ter 10 números ou mais',
-            'date' => 'Data Inválida'
+            'in' =>'Desconhecido',           
+            'integer' => 'Deve ser um número inteiro',
         ]);       
 
         $data = $request->toArray();
         
-        $student = Student::create($data); 
+        $student = Course::create($data); 
 
-        return redirect()->route("alunos.index"); 
+        return redirect()->route("cursos.index"); 
     }
 
 

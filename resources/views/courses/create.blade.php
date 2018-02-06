@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
 @section('htmlheader_title')
-	Alunos
+	Cursos
 @endsection
 
 @section('contentheader_title')
-    Alunos
+    Cursos
   @stop
 
 @section('contentheader_description')
@@ -14,7 +14,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="{{ route('alunos.index') }}"><i class="fa fa-users"></i>Alunos</a></li>
+        <li><a href="{{ route('cursos.index') }}"><i class="fa fa-users"></i>Cursos</a></li>
         <li class="active">Adicionar</li>
     </ol>
 @stop
@@ -24,14 +24,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    {!! Form::open(['route' => 'alunos.store']) !!}
-                    @include('students.form')                        
+                    {!! Form::open(['route' => 'cursos.store']) !!}
+                    @include('courses.form')                        
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="actions">
                             <ul>
-                                <li><a href="{{ route('alunos.index') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i> Listar</a></li>                           
+                                <li><a href="{{ route('cursos.index') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i> Listar</a></li>                           
                             </ul>
                         </div>
                     </div>

@@ -74,7 +74,7 @@
                                                 <td>{{ $course->monthly_amount }}</td>
                                                 <td>{{ $course->registration_tax }}</td>
                                                 <td>{{ $course->period }}</td>
-                                                <td>{{ $course->duration }}</td>
+                                                <td>{{ $course->duration }} meses</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
