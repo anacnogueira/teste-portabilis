@@ -37,7 +37,7 @@ class CoursesController extends Controller
 
     public function store(Request $request)
     {
-       request()->validate([
+        request()->validate([
             'name' => 'required', 
             'monthly_amount' => 'required',
             'registration_tax' => 'required',
@@ -59,45 +59,42 @@ class CoursesController extends Controller
 
     public function edit($id)
     {
-        $student = Student::find($id);
+        $course = Course::find($id);
 
-         return view('students.edit', compact('student'));
+        $periods = $this->periods;
+
+        return view('courses.edit', compact('course','periods'));
     }
 
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
+        $course = Course::find($id);
 
 
-         request()->validate([
-            'name' => 'required|fullname', 
-            'cpf' => 'required|cpf',
-            'phone' => 'required|min:12',
-            'rg' => 'required',
-            'date_birth' => 'required|date_format:d/m/Y'
+        request()->validate([
+            'name' => 'required', 
+            'monthly_amount' => 'required',
+            'registration_tax' => 'required',
+            'period' => 'required|in:'.implode(',', $this->periods),
+            'duration' => 'required|integer'
             ],[
             'required' => 'Campo obrigatório',
-            'unique' =>'CPF já cadastrado',           
-            'fullname' => 'Informe o nome completo',
-            'cpf' => 'CPF inválido',
-            'phone.min'  => 'O telefone deve ter 10 números ou mais',
-            'date' => 'Data Inválida'
-        ]);
+            'in' =>'Desconhecido',           
+            'integer' => 'Deve ser um número inteiro',
+        ]);   
        
 
         $data = $request->toArray();
         
-        $student->update($data);
+        $course->update($data);
 
-        return redirect()->route("alunos.index");
+        return redirect()->route("cursos.index");
     }
 
     public function destroy($id)
     {
-    	Student::find($id)->delete();
+    	Course::find($id)->delete(); 
 
- 
-
-        return redirect()->route("alunos.index");
+        return redirect()->route("cursos.index");
     }
 }
