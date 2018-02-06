@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
 @section('htmlheader_title')
-	Alunos
+	Cursos
 @endsection
 
 @section('contentheader_title')
-    Alunos
-    <a href="{{ route('alunos.create')}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i> Adicionar</a>
+    Cursos
+    <a href="{{ route('cursos.create')}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i> Adicionar</a>
 @stop
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-users"></i>Alunos</a></li>
+        <li><a href="#"><i class="fa fa-users"></i>Cursos</a></li>
         <li class="active">Listar</li>
     </ol>
 @stop
@@ -26,7 +26,7 @@
     <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('/js/studentsList.js') }}"></script>
+    <script src="{{ asset('/js/coursesList.js') }}"></script>
 @stop
 
 @section('main-content')
@@ -35,7 +35,7 @@
             <div class="col-xs-12">
                 <div class="box box-danger">
                     <div class="box-header">
-                        <h3 class="box-title">Listar Alunos</h3>
+                        <h3 class="box-title">Listar Cursos</h3>
                     </div>
                     <div class="box-body">
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -45,46 +45,46 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="student" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="table_info">
+                                    <table id="course" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="table_info">
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Ordernar por nome do usuário">Nome</th>
-                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pelo nome do grupo">CPF</th>
-                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pela área">RG</th>
-                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pelo e-mail do usuário">Data de Nascimento</th>
-                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pelo status do usuário">Telefone</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Ordernar por nome do curso">Nome</th>
+                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pelo valor da mensalidade">Valor mensalidade</th>
+                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pelo valor da matrícula área">Valor matrícula</th>
+                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pelo periodo">Período</th>
+                                                <th class="sorting" tabindex="0" aria-controls="order" rowspan="1" colspan="1" aria-label="Ordernar pela duração">Duração</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($students as $student)
+                                            @foreach ($courses as $course)
                                             <tr role="row" class="">
                                                 <td>
-                                                    {{ $student->name }} <br>
+                                                    {{ $course->name }} <br>
                                                     <div style="float:left; margin-right: 10px">
-                                                        {!! Form::open(['route' => ['alunos.destroy', $student->id], 'method' => 'delete', 'id'=>'form'.$student->id]) !!}
-                                                        {!! Form::button('<i class="fa fa-times"></i> Excluir', ['type' => 'submit','class' => 'btn btn-danger', 'onclick'=>"deleteConfirm(event, {$student->id})"]) !!}
+                                                        {!! Form::open(['route' => ['cursos.destroy', $course->id], 'method' => 'delete', 'id'=>'form'.$course->id]) !!}
+                                                        {!! Form::button('<i class="fa fa-times"></i> Excluir', ['type' => 'submit','class' => 'btn btn-danger', 'onclick'=>"deleteConfirm(event, {$course->id})"]) !!}
                                                         {!! Form::close() !!}
                                                         &nbsp; &nbsp;
                                                     </div>
-                                                    <a href="{{ route('alunos.edit',['id' => $student->id]) }}" class='btn btn-warning'><i class="fa fa-edit"></i> Editar</a>
+                                                    <a href="{{ route('cursos.edit',['id' => $course->id]) }}" class='btn btn-warning'><i class="fa fa-edit"></i> Editar</a>
                                                     &nbsp; &nbsp;
-                                                    <a href="{{ route('alunos.show',['id' => $student->id]) }}" class ='btn btn-primary'><i class="fa fa-eye"></i> Visualizar</a>
+                                                    <a href="{{ route('cursos.show',['id' => $course->id]) }}" class ='btn btn-primary'><i class="fa fa-eye"></i> Visualizar</a>
                                                    &nbsp; &nbsp;
                                                 </td>
-                                                <td>{{ $student->cpf }}</td>
-                                                <td>{{ $student->rg }}</td>
-                                                <td>{{ $student->date_birth }}</td>
-                                                <td>{{ $student->phone }}</td>
+                                                <td>{{ $course->monthly_amount }}</td>
+                                                <td>{{ $course->registration_tax }}</td>
+                                                <td>{{ $course->period }}</td>
+                                                <td>{{ $course->duration }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                         <tfoot>
                                           <tr>
                                             <th rowspan="1" colspan="1">Nome</th>
-                                            <th rowspan="1" colspan="1">CPF</th>
-                                            <th rowspan="1" colspan="1">RG</th>
-                                            <th rowspan="1" colspan="1">Data de Nascimento</th>
-                                            <th rowspan="1" colspan="1">Telefone</th>
+                                            <th rowspan="1" colspan="1">Valor mensalidade</th>
+                                            <th rowspan="1" colspan="1">Valor matrícula</th>
+                                            <th rowspan="1" colspan="1">Período</th>
+                                            <th rowspan="1" colspan="1">Duração</th>
                                           </tr>
                                         </tfoot>
                                     </table>

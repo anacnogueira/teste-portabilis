@@ -34,14 +34,10 @@
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('/alunos') }}"><i class='fa fa-link'></i> <span>Alunos</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                </ul>
-            </li>
+            <li><a href="{{ url('/cursos') }}"><i class='fa fa-link'></i> <span>Cursos</span></a></li>
+            <li><a href="#"><i class='fa fa-link'></i> <span>Matrículas</span></a></li>
+            <li><a href="#"><i class='fa fa-link'></i> <span>Pagamentos</span></a></li>
+            
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

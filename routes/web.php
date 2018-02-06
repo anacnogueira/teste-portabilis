@@ -18,6 +18,7 @@
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('alunos', 'StudentsController');
+	Route::resource('cursos', 'CoursesController');
 
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
