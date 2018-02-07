@@ -9,6 +9,10 @@ class Payment extends Model
 {
     protected $guarded = [];
 
+    protected $fillable = [
+        'registration_id','type', 'value_paid', 'change', 'paid'
+    ];
+
     public function registration()
     {
         return $this->belongsTo('App\Entities\Registration');
@@ -23,7 +27,7 @@ class Payment extends Model
     public function setChangeAttribute($value) 
     {
         
-        $this->attributes['change'] = str_replace(",", ".", str_replace(".", "",$value));
+        $this->attributes['change'] = str_replace("R$ ","",str_replace(",", ".", str_replace(".", "",$value)));
     }
 
 

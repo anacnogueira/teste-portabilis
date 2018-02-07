@@ -35,8 +35,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('/alunos') }}"><i class='fa fa-link'></i> <span>Alunos</span></a></li>
             <li><a href="{{ url('/cursos') }}"><i class='fa fa-link'></i> <span>Cursos</span></a></li>
-            <li><a href="{{ url('/matriculas') }}"><i class='fa fa-link'></i> <span>Matrículas</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>Pagamentos</span></a></li>
+            <li><a href="{{ url('/matriculas') }}"><i class='fa fa-link'></i> <span>Matrículas</span></a></li>            
             
         </ul><!-- /.sidebar-menu -->
     </section>

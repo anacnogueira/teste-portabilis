@@ -88,4 +88,11 @@ class RegistrationsController extends Controller
 
         return view('registrations.show', compact('registration')); 
     }
+
+    public function getValueCourse($id, $type)
+    {
+        $course = Registration::find($id)->course;
+
+        return $course->{$type};
+    }
 }

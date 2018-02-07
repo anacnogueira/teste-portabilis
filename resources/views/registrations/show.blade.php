@@ -87,7 +87,7 @@
                                 <div class="actions">
                                     <ul>
                                         <li>
-                                            <a href="#" class="btn btn-success"><i class="fa fa-money"></i> Pagar </a> 
+                                            <a href="{{ route('pagamentos.create',['registration_id' => $registration->id]) }}" class="btn btn-success"><i class="fa fa-money"></i> Pagar </a> 
                                         </li>
                                         <li>
                                             <a href="#" class="btn btn-danger"><i class="fa fa-times"></i> Cancelar </a> 
