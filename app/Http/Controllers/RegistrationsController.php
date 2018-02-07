@@ -10,6 +10,35 @@ use App\Entities\Registration;
 class RegistrationsController extends Controller
 {
    
+    protected $status = [
+        'Não' => 'Sim',
+        'Sim' => 'Não'
+    ];
+
+
+    public function index()
+    {
+        $years = array_combine(range(date("Y"), date("Y")-10), range(date("Y"), date("Y")-10));
+        $courses = [];
+        $students = [];
+        $status = $this->status;
+
+
+        $data = Course::orderBy('name', 'asc')->get();
+        foreach ($data as $item) {
+            $courses[$item->name] = $item->name;   
+        }
+
+        $data = Student::orderBy('name', 'asc')->get();
+        foreach ($data as $item) {
+            $students[$item->name] = $item->name;   
+        }
+
+        $registrations = Registration::all();
+
+        return view('registrations.index', compact('registrations','years','courses','students','status'));
+    }
+
     public function create()
     {
         $students   = [];
