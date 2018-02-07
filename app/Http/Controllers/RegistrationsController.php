@@ -78,8 +78,14 @@ class RegistrationsController extends Controller
 
         $student = Registration::create($data); 
 
-        return redirect()->route("matriculas.index");      
-
-       
+        return redirect()->route("matriculas.index");       
     }    
+
+
+    public function show($id)
+    {
+        $registration = Registration::find($id);
+
+        return view('registrations.show', compact('registration')); 
+    }
 }
