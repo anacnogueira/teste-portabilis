@@ -31,15 +31,15 @@ class Payment extends Model
     }
 
 
-    public function getValuePaidAttribute($value) 
-    {
-        return "R$ ".number_format($value,2,',','.');
-    }
+    // public function getValuePaidAttribute($value) 
+    // {
+    //     return "R$ ".number_format($value,2,',','.');
+    // }
 
-    public function getChangeAttribute($value) 
-    {
-        return "R$ ".number_format($value,2,',','.');
-    }
+    // public function getChangeAttribute($value) 
+    // {
+    //     return "R$ ".number_format($value,2,',','.');
+    // }
 
     public function getCreatedAtAttribute($value) 
     {

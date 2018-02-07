@@ -18,7 +18,7 @@ class Registration extends Model
         return $this->belongsTo('App\Entities\Course');
     } 
 
-    public function payment()
+    public function payments()
     {
         return $this->hasMany('App\Entities\Payment');
     }    
