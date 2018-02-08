@@ -8,6 +8,15 @@
     Cursos
 @stop
 
+@section('htmlheader_css')
+   <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+@stop
+
+@section('scripts_js')
+    <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
+@stop
+
+
 @section('contentheader_breadcrumb')
     <li><a href="{{ route('cursos.index') }}"><i class="fa fa-dashboard"></i> Cursos</a></li>
     <li class="active">Editar</li>
@@ -26,7 +35,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                {!! Form::model($course, ['route'=>['cursos.update', 'id' => $course->id],'method'=>'put']) !!}
+                {!! Form::model($course, ['route'=>['cursos.update', 'id' => $course->id],'method'=>'put','id' =>'frm_course']) !!}
                 @include('courses.form')                            
             </div>
             <div class="row">

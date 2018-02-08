@@ -61,6 +61,8 @@ class CoursesController extends Controller
     {
         $course = Course::find($id);
 
+        $course['monthly_amount'] = number_format($course->monthly_amount,2,',','.');
+
         $periods = $this->periods;
 
         return view('courses.edit', compact('course','periods'));

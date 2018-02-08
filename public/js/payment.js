@@ -19,15 +19,19 @@ $('#type').change(function(){
     });   
 })
 
-$("#value_paid").keyup(function(){
+$("#value_paid").keydown(function(){
 	
-	var value = cashToFloat($('#value').val());
-	var value_paid = cashToFloat($('#value_paid').val());
-	
+	setTimeout(function(){ 
 
-	var change = number_format((value_paid - value),2,",",".");
+    var value = cashToFloat($('#value').val());
+    var value_paid = cashToFloat($('#value_paid').val());
+
+    var change = number_format((value_paid - value),2,',','.');
 
 
-	$("#change").val("R$ " + change);
+    $("#change").val("R$ " + change);
 
+
+  }, 1000);
+  
 })

@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentheader_title')
-    Cursos
+    Matriculas
     <a href="{{ route('matriculas.create')}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i> Adicionar</a>
 @stop
 

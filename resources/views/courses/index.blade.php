@@ -71,7 +71,7 @@
                                                     <a href="{{ route('cursos.show',['id' => $course->id]) }}" class ='btn btn-primary'><i class="fa fa-eye"></i> Visualizar</a>
                                                    &nbsp; &nbsp;
                                                 </td>
-                                                <td>{{ $course->monthly_amount }}</td>
+                                                <td>R$ {{ number_format($course->monthly_amount,2,',','.') }}</td>
                                                 <td>{{ $course->registration_tax }}</td>
                                                 <td>{{ $course->period }}</td>
                                                 <td>{{ $course->duration }} meses</td>

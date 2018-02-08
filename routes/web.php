@@ -12,10 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/home', function () {
+       	return redirect()->route('matriculas.index');
+	});
+
 
 	Route::resource('alunos', 'StudentsController');
 	Route::resource('cursos', 'CoursesController');

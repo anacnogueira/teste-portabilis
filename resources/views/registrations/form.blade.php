@@ -25,7 +25,7 @@
   <div class="box-footer">
   	<a href="{{ route('matriculas.index')}}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
     &nbsp;&nbsp;
-    {!! Form::button('<i class="fa fa-check"></i> Salvar', ['type' => 'submit','class' => 'btn btn-success']) !!}
+    {!! Form::button('<i class="fa fa-check"></i> Salvar', ['type' => 'submit','class' => 'btn btn-success', 'onclick'=>"saveConfirm(event, 'frm_registration')"]) !!}
   </div>  
  </div>
 </div>     

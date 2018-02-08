@@ -23,7 +23,7 @@
           </div>
           <div class="form-group @if ($errors->has('date_birth')) has-error @endif">
             {!! Form::label('date_birth', 'Data de Nascimento*') !!} 
-            {!! Form::text('date_birth', null, $attributes = ['class' => 'form-control']); !!}
+            {!! Form::text('date_birth', null, $attributes = ['class' => 'date form-control']); !!}
             @if ($errors->has('date_birth')) <span class="help-block">{{ $errors->first('date_birth') }}</span> @endif
           </div>
           <div class="form-group @if ($errors->has('phone')) has-error @endif">
@@ -37,7 +37,7 @@
   <div class="box-footer">
   	<a href="{{ route('alunos.index')}}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
     &nbsp;&nbsp;
-    {!! Form::button('<i class="fa fa-check"></i> Salvar', ['type' => 'submit','class' => 'btn btn-success']) !!}
+    {!! Form::button('<i class="fa fa-check"></i> Salvar', ['type' => 'submit','class' => 'btn btn-success', 'onclick'=>"saveConfirm(event, 'frm_student')"]) !!}
   </div>  
  </div>
 </div>     

@@ -1,11 +1,12 @@
 <head>
     <meta charset="UTF-8">
-    <title> AdminLTE 2 with Laravel - @yield('htmlheader_title', 'Your title here') </title>
+    <title> Teste Portabilis - @yield('htmlheader_title', '') </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     @yield('htmlheader_css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

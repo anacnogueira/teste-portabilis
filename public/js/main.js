@@ -22,6 +22,31 @@ function deleteConfirm(event, id){
 	});
 }
 
+
+function saveConfirm(event, form){
+  event.preventDefault();
+  var form = document.getElementById(form);
+
+  swal({   
+    title: "",   
+    text: "Tem certeza que deseja salvar esse registro?",   
+    type: "warning",   
+    showCancelButton: true, 
+    cancelButtonText: "Cancelar",  
+    confirmButtonColor: "#DD6B55",   
+    confirmButtonText: "Sim",   
+    closeOnConfirm: false 
+  }, 
+  function(isConfirm){  
+    if(isConfirm){
+      form.submit(); 
+    } else {
+      event.returnValue = false; 
+      return false;
+    }   
+  });
+}
+
 function number_format(number, decimals, dec_point, thousands_sep) {
   number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
   var n = !isFinite(+number) ? 0 : +number,

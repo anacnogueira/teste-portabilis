@@ -55,7 +55,7 @@
                                 <div class="actions">
                                     <ul>
                                         <li>
-                                            <a href="{{ route('alunos.edit', ['id' => $student->id]) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Editar </a> 
+                                            <a href="{{ route('alunos.edit', ['id' => $student->id]) }}" class="btn btn-success"><i class="fa fa-edit"></i> Editar </a> 
                                         </li>
                                         <li>
                                             <div style="float:left; margin-right: 10px">

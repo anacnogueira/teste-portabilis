@@ -1,0 +1,57 @@
+/*  Actions  */
+ul li {
+	list-style-type: none;
+	padding: 0;
+}
+
+div.actions ul {
+	margin: 0px 0;
+	padding: 0;
+}
+
+div.actions li {
+	display: inline;
+	list-style-type: none;
+	line-height: 2em;
+	margin: 0 1em 0 0;
+	white-space: nowrap;
+}
+
+/* Scaffold View */
+dl {
+	line-height: 2em;
+	margin: 0em 0em;
+	width: 100%;
+}
+
+dl.altrow { 	background: #f4f4f4; }
+
+dt {
+	font-weight: bold;
+	padding-left: 4px;
+  	vertical-align: middle;
+}
+
+dd {
+	margin-left: 13em;
+	margin-top: -1.5em;
+	vertical-align: top;
+}
+
+/* TAMANHO DE CAMPOS ESPECIAIS */
+input.phone{ width: 117px; }
+input.date{ width: 97px; }
+input.cpf{ width: 125px; }
+input.custom{ width: auto; }
+
+input:-moz-read-only { 
+	background: #fff!important; 
+	cursor: text!important;
+
+}
+input:read-only { 
+	background: #fff!important; 
+	cursor: text!important;
+}
+
+

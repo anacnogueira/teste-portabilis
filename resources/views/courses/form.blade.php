@@ -11,12 +11,12 @@
           </div>          
           <div class="form-group @if ($errors->has('monthly_amount')) has-error @endif">
             {!! Form::label('monthly_amount', 'Valor da Mensalidade*') !!} 
-            {!! Form::text('monthly_amount', null, $attributes = ['class' => 'form-control']); !!}
+            {!! Form::text('monthly_amount', null, $attributes = ['class' => 'custom value form-control']); !!}
             @if ($errors->has('monthly_amount')) <span class="help-block">{{ $errors->first('monthly_amount') }}</span> @endif
           </div>
            <div class="form-group @if ($errors->has('registration_tax')) has-error @endif">
             {!! Form::label('registration_tax', 'Valor da matrícula*') !!} 
-            {!! Form::text('registration_tax', null, $attributes = ['class' => ' form-control']); !!}
+            {!! Form::text('registration_tax', null, $attributes = ['class' => 'custom value  form-control']); !!}
             @if ($errors->has('registration_tax')) <span class="help-block">{{ $errors->first('registration_tax') }}</span> @endif
           </div>
           <div class="form-group @if ($errors->has('period')) has-error @endif">
@@ -35,7 +35,7 @@
   <div class="box-footer">
   	<a href="{{ route('cursos.index')}}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
     &nbsp;&nbsp;
-    {!! Form::button('<i class="fa fa-check"></i> Salvar', ['type' => 'submit','class' => 'btn btn-success']) !!}
+    {!! Form::button('<i class="fa fa-check"></i> Salvar', ['type' => 'submit','class' => 'btn btn-success', 'onclick'=>"saveConfirm(event, 'frm_course')"]) !!}
   </div>  
  </div>
 </div>     

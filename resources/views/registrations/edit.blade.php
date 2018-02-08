@@ -12,6 +12,14 @@
     Cancelar
 @stop
 
+@section('htmlheader_css')
+   <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+@stop
+
+@section('scripts_js')
+    <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
+@stop
+
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('matriculas.index') }}"><i class="fa fa-users"></i>Matrículas</a></li>
@@ -24,7 +32,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    {!! Form::model($registration, ['route'=>['matriculas.update', 'id' => $registration->id],'method'=>'put']) !!}
+                    {!! Form::model($registration, ['route'=>['matriculas.update', 'id' => $registration->id],'method'=>'put','id' =>'frm_registration']) !!}
                     <div class="col-md-12">
                       <div class="box box-danger">
                         <div class="box-body">
@@ -44,7 +52,7 @@
                       <div class="box-footer">
                         <a href="{{ route('matriculas.show',['id' => $registration->id])}}" class="btn btn-warning"><i class="fa fa-times"></i> Cancelar</a>
                         &nbsp;&nbsp;
-                        {!! Form::button('<i class="fa fa-check"></i> Fazer Cancelamento', ['type' => 'submit','class' => 'btn btn-success']) !!}
+                        {!! Form::button('<i class="fa fa-check"></i> Fazer Cancelamento', ['type' => 'submit','class' => 'btn btn-success', 'onclick'=>"saveConfirm(event, 'frm_registration')"]) !!}
                       </div>  
                     </div>
                 </div>     

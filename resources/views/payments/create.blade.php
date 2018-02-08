@@ -12,7 +12,13 @@
     Pagar
 @stop
 
+@section('htmlheader_css')
+   <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+@stop
+
+
 @section('scripts_js')
+    <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
     <script type="text/javascript">var URL = "{{ url('/') }}"; </script>
     <script src="{{ asset('/js/payment.js') }}"></script>
 @stop
@@ -30,7 +36,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    {!! Form::open(['route' => 'pagamentos.store']) !!}
+                    {!! Form::open(['route' => 'pagamentos.store','id' =>'frm_payment']) !!}
                     @include('payments.form')                        
                 </div>
                 <div class="row">

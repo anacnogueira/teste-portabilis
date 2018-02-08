@@ -12,6 +12,15 @@
     Adicionar
 @stop
 
+@section('htmlheader_css')
+   <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+@stop
+
+@section('scripts_js')
+    <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
+@stop
+
+
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('cursos.index') }}"><i class="fa fa-users"></i>Cursos</a></li>
@@ -24,7 +33,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    {!! Form::open(['route' => 'cursos.store']) !!}
+                    {!! Form::open(['route' => 'cursos.store','id' =>'frm_course']) !!}
                     @include('courses.form')                        
                 </div>
                 <div class="row">
