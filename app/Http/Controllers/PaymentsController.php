@@ -39,7 +39,8 @@ class PaymentsController extends Controller
 
         if ($payment->type == "registration_tax") {
             $payment->registration->update([
-                'paid' => 1
+                'paid' => 1,
+                'active' => 1
             ]);
         }
 

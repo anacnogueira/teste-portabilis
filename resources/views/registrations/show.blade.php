@@ -36,6 +36,13 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <dl>
+                                  @if (!empty($registration->canceled_at))
+                                    <dt>Status: </dt>
+                                    <dd>Cancelado&nbsp;</dd>
+                                    <dt>Cancelado em: </dt>
+                                    <dd>{{ $registration->canceled_at }} &nbsp;</dd>
+                                    <br>
+                                  @endif  
                                    <fieldset>
                                        <legend>Dados do Aluno</legend>
                                         <dt>Nome: </dt>
@@ -99,7 +106,7 @@
                                             <a href="{{ route('pagamentos.create',['registration_id' => $registration->id]) }}" class="btn btn-success"><i class="fa fa-money"></i> Pagar </a> 
                                         </li>
                                         <li>
-                                            <a href="#" class="btn btn-danger"><i class="fa fa-times"></i> Cancelar </a> 
+                                            <a href="{{ route('matriculas.edit',['id' => $registration->id]) }}" class="btn btn-danger"><i class="fa fa-times"></i> Cancelar </a> 
                                         </li>
                                         <li>
                                             <a href="{{ route('matriculas.index') }}" class="btn btn-warning"><i class="fa fa-list-alt"></i> Listar </a> 

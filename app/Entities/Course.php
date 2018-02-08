@@ -20,10 +20,10 @@ class Course extends Model
         $this->attributes['registration_tax'] = str_replace(",", ".", str_replace(".", "",$value));
     }
 
-    public function getMonthlyAmountAttribute($value) 
-    {
-        return "R$ ".number_format($value,2,',','.');
-    }
+    // public function getMonthlyAmountAttribute($value) 
+    // {
+    //     return "R$ ".number_format($value,2,',','.');
+    // }
 
     public function getRegistrationTaxAttribute($value) 
     {

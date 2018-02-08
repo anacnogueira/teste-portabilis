@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Entities\Student;
 use App\Entities\Course;
 use App\Entities\Registration;
+use Carbon\Carbon;
 
 class RegistrationsController extends Controller
 {
@@ -79,7 +80,37 @@ class RegistrationsController extends Controller
         $student = Registration::create($data); 
 
         return redirect()->route("matriculas.index");       
-    }    
+    }
+
+    public function edit($id)
+    {
+        $registration = Registration::find($id);
+
+        $months_course = $registration->course->duration;
+
+        $payments = $registration->payments->filter(function ($payment) {
+            return $payment->type == "monthly_amount" && $payment->paid == 1;
+        });
+
+        $months_paid = count($payments->values());  
+
+        $missing_months = $months_course - $months_paid;
+
+        $fine_amount = ($registration->course->monthly_amount * $missing_months) * 0.1;
+
+        return view('registrations.edit', compact('registration','missing_months','fine_amount'));
+
+    }   
+
+    public function update(Request $request, $id)
+    {
+        $registration = Registration::find($id)->update([
+            'active' => 0,
+            'canceled_at' => Carbon::now()
+        ]);
+
+        return redirect()->route("matriculas.show", ['id' => $id]); 
+    } 
 
 
     public function show($id)

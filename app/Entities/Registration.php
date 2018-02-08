@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Registration extends Model
 {
@@ -22,4 +23,9 @@ class Registration extends Model
     {
         return $this->hasMany('App\Entities\Payment');
     }    
+
+     public function getCanceledAtAttribute($value) 
+    {
+        return Carbon::parse($value)->format('d/m/Y H:i');
+    }
 }
