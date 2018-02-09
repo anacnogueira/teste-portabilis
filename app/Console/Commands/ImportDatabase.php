@@ -65,9 +65,9 @@ class ImportDatabase extends Command
         })->get();
         
         DB::beginTransaction();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('students')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         DB::commit();
 
         foreach ($spreadsheets as $spreadsheet) {
@@ -102,9 +102,9 @@ class ImportDatabase extends Command
 
         
         DB::beginTransaction();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('courses')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         DB::commit();
 
         foreach ($spreadsheets as $line) {               
@@ -130,9 +130,9 @@ class ImportDatabase extends Command
 
         
         DB::beginTransaction();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('registrations')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         DB::commit();
 
         foreach ($spreadsheets as $spreadsheet) {
