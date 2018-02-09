@@ -88,7 +88,7 @@
                                                     <td>{{ $payment->type == 'registration_tax' ? 'Matrícula' : 'Mensalidade' }}</td>
                                                     <td>R$ {{ number_format(($payment->value_paid - $payment->change),2,',','.') }}</td>
                                                     <td>{{ $payment->created_at }}</td>
-                                                    <td>{{ $payment->status == 1 ? 'Pago' : 'Não Pago' }}</td>
+                                                    <td>{{ $payment->paid == 1 ? 'Pago' : 'Não Pago' }}</td>
                                                   </tr>          
                                              @endforeach;
                                            </tbody>
