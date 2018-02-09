@@ -43,6 +43,12 @@ class ImportDatabase extends Command
      */
     public function handle()
     {
+        $this->info('Truncate Tables');
+        $this->truncateTables();
+        $this->info('Done!');
+
+
+
         $this->info("Importing students registers");
         $this->importStudents();
         $this->info("Done!");
@@ -56,6 +62,15 @@ class ImportDatabase extends Command
         $this->info("Done!");
     }
 
+    private function truncateTables()
+    {
+        $tables = ['students', 'courses', 'registrations'];
+
+        foreach ($tables as $table) {
+           DB::statement('TRUNCATE TABLE ' . $table . ' CASCADE;');
+        }
+    }
+
     private function importStudents()
     {
 
@@ -64,12 +79,7 @@ class ImportDatabase extends Command
 
         })->get();
         
-        DB::beginTransaction();
-        //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('students')->truncate();
-        //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        DB::commit();
-
+        
         foreach ($spreadsheets as $spreadsheet) {
             foreach ($spreadsheet as $line) {
                 $fields = explode(";",$line);
@@ -98,14 +108,8 @@ class ImportDatabase extends Command
         $excel = \App::make('excel');
         $spreadsheets = \Excel::load('public/csv/courses_file.csv', function($reader) {
 
-        })->get();
-
+        })->get();        
         
-        DB::beginTransaction();
-        //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('courses')->truncate();
-        //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        DB::commit();
 
         foreach ($spreadsheets as $line) {               
             Course::create([
@@ -129,13 +133,7 @@ class ImportDatabase extends Command
         })->get();
 
         
-        DB::beginTransaction();
-        //DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('registrations')->truncate();
-        //DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        DB::commit();
-
-        foreach ($spreadsheets as $spreadsheet) {
+       foreach ($spreadsheets as $spreadsheet) {
             foreach ($spreadsheet as $line) {
                 $fields = explode(";",$line);
 
