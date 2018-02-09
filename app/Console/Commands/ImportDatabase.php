@@ -48,11 +48,11 @@ class ImportDatabase extends Command
         $this->info("Done!");
 
         $this->info("Importing courses registers");
-        //$this->importCourses();
+        $this->importCourses();
         $this->info("Done!");
 
         $this->info("Importing registrations registers");
-        //$this->importRegistrations();
+        $this->importRegistrations();
         $this->info("Done!");
     }
 
@@ -60,106 +60,106 @@ class ImportDatabase extends Command
     {
 
         $excel = \App::make('excel');
-        // $spreadsheets = \Excel::load('public/storage/csv/students_file.csv', function($reader) {
+        $spreadsheets = \Excel::load('public/csv/students_file.csv', function($reader) {
 
-        // })->get();
+        })->get();
         
-        // DB::beginTransaction();
-        // DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        // DB::table('students')->truncate();
-        // DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        // DB::commit();
+        DB::beginTransaction();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('students')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::commit();
 
-        // foreach ($spreadsheets as $spreadsheet) {
-        //     foreach ($spreadsheet as $line) {
-        //         $fields = explode(";",$line);
+        foreach ($spreadsheets as $spreadsheet) {
+            foreach ($spreadsheet as $line) {
+                $fields = explode(";",$line);
 
-        //         $student = Student::where('cpf',$fields[2])->get();
+                $student = Student::where('cpf',$fields[2])->get();
 
-        //         if (count($student) == 0){
-        //             Student::create([
-        //                 'rg' => $fields[3],
-        //                 'cpf' => $fields[2],
-        //                 'date_birth' => Carbon::parse($fields[5])->format('d/m/Y'),
-        //                 'name' => $fields[1],
-        //                 'phone' => $fields[4]
-        //             ]);
+                if (count($student) == 0){
+                    Student::create([
+                        'rg' => $fields[3],
+                        'cpf' => $fields[2],
+                        'date_birth' => Carbon::parse($fields[5])->format('d/m/Y'),
+                        'name' => $fields[1],
+                        'phone' => $fields[4]
+                    ]);
 
-        //         }    
+                }    
 
-        //     }            
-        // }    
+            }            
+        }    
 
     }
 
-    // private function importCourses()
-    // {
+    private function importCourses()
+    {
       
-    //     $excel = \App::make('excel');
-    //     $spreadsheets = \Excel::load('public/storage/csv/courses_file.csv', function($reader) {
+        $excel = \App::make('excel');
+        $spreadsheets = \Excel::load('public/csv/courses_file.csv', function($reader) {
 
-    //     })->get();
+        })->get();
 
         
-    //     DB::beginTransaction();
-    //     DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-    //     DB::table('courses')->truncate();
-    //     DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-    //     DB::commit();
+        DB::beginTransaction();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('courses')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::commit();
 
-    //     foreach ($spreadsheets as $line) {               
-    //         Course::create([
-    //             'name' => $line["course_name"],
-    //             'monthly_amount' => $line['monthly_amount'],
-    //             'registration_tax' => $line['registration_tax'],
-    //             'period' => $line['period'],
-    //             'duration' => $line['duration']
-    //         ]);              
-    //     }    
+        foreach ($spreadsheets as $line) {               
+            Course::create([
+                'name' => $line["course_name"],
+                'monthly_amount' => $line['monthly_amount'],
+                'registration_tax' => $line['registration_tax'],
+                'period' => $line['period'],
+                'duration' => $line['duration']
+            ]);              
+        }    
 
-    // }
+    }
 
 
-    // private function importRegistrations()
-    // {
+    private function importRegistrations()
+    {
       
-    //     $excel = \App::make('excel');
-    //     $spreadsheets = \Excel::load('public/storage/csv/registrations_file.csv', function($reader) {
+        $excel = \App::make('excel');
+        $spreadsheets = \Excel::load('public/csv/registrations_file.csv', function($reader) {
 
-    //     })->get();
+        })->get();
 
         
-    //     DB::beginTransaction();
-    //     DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-    //     DB::table('registrations')->truncate();
-    //     DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-    //     DB::commit();
+        DB::beginTransaction();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('registrations')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::commit();
 
-    //     foreach ($spreadsheets as $spreadsheet) {
-    //         foreach ($spreadsheet as $line) {
-    //             $fields = explode(";",$line);
+        foreach ($spreadsheets as $spreadsheet) {
+            foreach ($spreadsheet as $line) {
+                $fields = explode(";",$line);
 
-    //             if ($fields[1] > 0 and $fields[2] > 0){
+                if ($fields[1] > 0 and $fields[2] > 0){
 
-    //                 $student = Student::find($fields[1]);
-    //                 $course = Course::find($fields[2]);
+                    $student = Student::find($fields[1]);
+                    $course = Course::find($fields[2]);
 
-    //                 if (count($student) > 0 and count($course) > 0) {
-    //                     Registration::create([
-    //                         'student_id' => $fields[1],
-    //                         'course_id' => $fields[2],
-    //                         'year' => $fields[3],
-    //                         'active' => 1,
-    //                         'paid' => 0
-    //                     ]); 
-    //                 }
+                    if (count($student) > 0 and count($course) > 0) {
+                        Registration::create([
+                            'student_id' => $fields[1],
+                            'course_id' => $fields[2],
+                            'year' => $fields[3],
+                            'active' => 1,
+                            'paid' => 0
+                        ]); 
+                    }
                     
   
-    //             }
+                }
                 
-    //         }
-    //     }    
+            }
+        }    
                 
 
-    // }
+    }
 }
