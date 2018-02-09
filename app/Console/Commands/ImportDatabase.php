@@ -49,17 +49,17 @@ class ImportDatabase extends Command
 
 
 
-        $this->info("Importing students registers");
-        $this->importStudents();
-        $this->info("Done!");
+        // $this->info("Importing students registers");
+        // $this->importStudents();
+        // $this->info("Done!");
 
-        $this->info("Importing courses registers");
-        $this->importCourses();
-        $this->info("Done!");
+        // $this->info("Importing courses registers");
+        // $this->importCourses();
+        // $this->info("Done!");
 
-        $this->info("Importing registrations registers");
-        $this->importRegistrations();
-        $this->info("Done!");
+        // $this->info("Importing registrations registers");
+        // $this->importRegistrations();
+        // $this->info("Done!");
     }
 
     private function truncateTables()
