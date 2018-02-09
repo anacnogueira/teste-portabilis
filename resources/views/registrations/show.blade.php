@@ -90,7 +90,7 @@
                                                     <td>{{ $payment->created_at }}</td>
                                                     <td>{{ $payment->paid == 1 ? 'Pago' : 'Não Pago' }}</td>
                                                   </tr>          
-                                             @endforeach;
+                                             @endforeach
                                            </tbody>
                                        </table>
                                    </fieldset>                              
