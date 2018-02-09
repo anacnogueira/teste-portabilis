@@ -76,9 +76,7 @@ class AppServiceProvider extends ServiceProvider
             $course_id    = Input::get($parameters[1]);  
             $year         = Input::get($parameters[2]); 
 
-            $registration = Registration::where('student_id',$student_id)->where('year', $year)->first();
-
-            dd($registration);
+            $registration = Registration::where('student_id',$student_id)->where('year', $year)->get();
 
             if (count($registration) > 0) {
                 $course = Course::find($course_id);
